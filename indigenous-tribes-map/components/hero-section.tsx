@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { ArrowRight, MapPin, Clock, MessageCircle } from "lucide-react"
+import { ArrowRight, MapPin, Clock, MessageCircle, Droplets } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
@@ -19,22 +19,27 @@ export function HeroSection() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <p className="text-accent font-medium tracking-widest uppercase text-sm mb-6">
-            Seed 2 Sea Presents
+            Seed 2 Sea Foundation Presents
           </p>
 
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-primary-foreground mb-6 text-balance">
-            First Nations
-            <span className="block text-accent">Living Journal</span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-primary-foreground mb-4 text-balance">
+            First Nations Living Journal
+            <span className="block text-accent">Stories, Territories, Living Waters</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-4 leading-relaxed">
-            A living tribute to the Indigenous peoples and tribes who have called this land home for thousands of years.
+          <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-3 leading-relaxed">
+            A living tribute to Indigenous peoples and tribes—honoring their stewardship, languages, and wisdom across
+            Turtle Island.
           </p>
 
-          <p className="text-sm text-primary-foreground/60 max-w-xl mx-auto mb-10">
-            Explore their territories, trace their journeys through time, and learn their stories through an interactive
-            guide.
-          </p>
+          <div className="inline-flex items-center gap-3 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full px-5 py-2 mb-8 shadow-sm">
+            <div className="h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center">
+              <Droplets className="h-4 w-4 text-accent" />
+            </div>
+            <p className="text-sm sm:text-base text-primary-foreground/80">
+              Waterdrop: Tribal Grandmothers led our first water blessing activation—centering living waters in every story.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -54,6 +59,14 @@ export function HeroSection() {
                 Ask the Guide
               </Link>
             </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <Link href="#donate">Support the Journal</Link>
+            </Button>
           </div>
         </motion.div>
 
@@ -61,7 +74,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-8"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20">
             <MapPin className="h-8 w-8 text-accent mb-4 mx-auto" />
@@ -77,6 +90,11 @@ export function HeroSection() {
             <MessageCircle className="h-8 w-8 text-accent mb-4 mx-auto" />
             <h3 className="font-serif text-lg font-semibold text-primary-foreground mb-2">AI Guide</h3>
             <p className="text-sm text-primary-foreground/70">Learn and explore through meaningful dialogue</p>
+          </div>
+          <div className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20">
+            <Droplets className="h-8 w-8 text-accent mb-4 mx-auto" />
+            <h3 className="font-serif text-lg font-semibold text-primary-foreground mb-2">Water Blessing</h3>
+            <p className="text-sm text-primary-foreground/70">Grounded in ceremonies guided by Tribal Grandmothers</p>
           </div>
         </motion.div>
       </div>

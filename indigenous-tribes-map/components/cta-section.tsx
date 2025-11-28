@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { MessageCircle, Sparkles } from "lucide-react"
+import { MessageCircle, Sparkles, HeartHandshake } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function CTASection() {
@@ -16,24 +16,30 @@ export function CTASection() {
           viewport={{ once: true }}
         >
           <Sparkles className="h-10 w-10 text-primary-foreground mx-auto mb-6" />
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
-            Begin Your Journey of Discovery
-          </h2>
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">Continue the Story</h2>
           <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Ask our AI guide about Indigenous history, traditions, languages, and the enduring legacy of Native American
-            peoples.
+            Ask our AI guide, explore the map, and help keep the First Nations Living Journal growing alongside Waterdrop
+            water blessings guided by Tribal Grandmothers.
           </p>
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-          >
-            <Link href="/guide">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              Start a Conversation
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+            >
+              <Link href="/guide">
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Start a Conversation
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-primary-foreground/40 text-primary-foreground">
+              <Link href="#donate">
+                <HeartHandshake className="mr-2 h-5 w-5" />
+                Support the Journal
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

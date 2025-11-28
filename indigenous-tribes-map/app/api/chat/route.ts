@@ -1,20 +1,10 @@
-import { consumeStream, convertToCoreMessages, streamText, type UIMessage } from "ai"
-import { createOpenAI } from '@ai-sdk/openai'
+import { type UIMessage } from "ai"
 import { tribes } from "@/lib/tribes-data"
 import { timelineEvents } from "@/lib/timeline-data"
 
 export const runtime = 'edge'
 
 export const maxDuration = 30
-
-const openrouter = createOpenAI({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1",
-  headers: {
-    "HTTP-Referer": process.env.OPENROUTER_REFERER || "https://tribal.seed2sea.org",
-    "X-Title": process.env.OPENROUTER_SITE_NAME || "First Nations Living Journal",
-  },
-})
 
 const systemPrompt = `You are a knowledgeable and respectful guide for the First Nations Living Journal, a tribute to the Indigenous peoples and tribes of America created by the Seed 2 Sea Foundation.
 
@@ -40,6 +30,23 @@ Foundation mission: The Seed 2 Sea Foundation operates at the intersection of Fa
 
 Always be educational, respectful, and encourage deeper exploration of Indigenous cultures and histories.`
 
+function uiMessagesToOpenRouter(messages: UIMessage[]) {
+  return messages.map((message) => {
+    const contentArray = (message as any).content as Array<{ type: string; text?: string }> | undefined
+    const textContent =
+      Array.isArray(contentArray) && contentArray.length > 0
+        ? contentArray
+            .filter((part) => part.type === "text" && typeof part.text === "string")
+            .map((part) => part.text?.trim())
+            .filter(Boolean)
+            .join("\n\n")
+        : ((message as any).text as string | undefined) || ""
+
+    const role = message.role === "assistant" ? "assistant" : message.role === "system" ? "system" : "user"
+    return { role, content: textContent }
+  })
+}
+
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json()
 
@@ -47,17 +54,43 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ error: "Missing OPENROUTER_API_KEY" }), { status: 500 })
   }
 
-  const prompt = convertToCoreMessages(messages)
+  const openRouterMessages = [
+    { role: "system", content: systemPrompt },
+    ...uiMessagesToOpenRouter(messages),
+  ]
 
-  const result = streamText({
-    model: openrouter(process.env.OPENROUTER_MODEL || "x-ai/grok-4.1-fast"),
-    system: systemPrompt,
-    messages: prompt,
-    maxOutputTokens: 1500,
-    temperature: 0.7,
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      "HTTP-Referer": process.env.OPENROUTER_REFERER || "https://tribal.seed2sea.org",
+      "X-Title": process.env.OPENROUTER_SITE_NAME || "First Nations Living Journal",
+    },
+    body: JSON.stringify({
+      model: process.env.OPENROUTER_MODEL || "x-ai/grok-4.1-fast",
+      messages: openRouterMessages,
+      max_tokens: 1200,
+      temperature: 0.7,
+      stream: false,
+    }),
   })
 
-  return result.toUIMessageStreamResponse({
-    consumeSseStream: consumeStream,
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "")
+    return new Response(JSON.stringify({ error: "Chat completion failed", detail: detail || response.statusText }), {
+      status: 500,
+    })
+  }
+
+  const json = await response.json()
+  const text = json?.choices?.[0]?.message?.content || ""
+
+  return new Response(text, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/plain; charset=utf-8",
+      "Cache-Control": "no-cache",
+    },
   })
 }

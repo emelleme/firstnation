@@ -84,6 +84,16 @@ export function Footer() {
                   Seed2Sea.org
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://github.com/emelleme/firstnation"
+                  className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub Repository
+                </a>
+              </li>
             </ul>
           </div>
         </div>

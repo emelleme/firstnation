@@ -26,7 +26,7 @@ const highlights = [
 
 export function DonationSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary/30 via-background to-secondary/20">
+    <section id="donate" className="py-24 bg-gradient-to-b from-secondary/30 via-background to-secondary/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,8 @@ export function DonationSection() {
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Your donation keeps this Living Journal growing and strengthens Seed 2 Sea&apos;s collaboration with
-              Native communities who steward these stories, waters, and lands.
+              Native communities who steward these stories, waters, and lands. It also fuels Waterdrop blessings guided
+              by Tribal Grandmothers so every activation honors living waters.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button

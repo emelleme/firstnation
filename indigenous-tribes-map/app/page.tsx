@@ -5,6 +5,7 @@ import { PillarsSection } from "@/components/pillars-section"
 import { FeaturedTribes } from "@/components/featured-tribes"
 import { CTASection } from "@/components/cta-section"
 import { DonationSection } from "@/components/donation-section"
+import { RealityBondsArtifacts } from "@/components/reality-bonds-artifacts"
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         <HeroSection />
         <PillarsSection />
         <FeaturedTribes />
+        <RealityBondsArtifacts />
         <DonationSection />
         <CTASection />
       </main>

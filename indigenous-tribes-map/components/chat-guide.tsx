@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useChat } from "@ai-sdk/react"
-import { DefaultChatTransport } from "ai"
+import { TextStreamChatTransport } from "ai"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Send, Feather, User, Sparkles, RefreshCw } from "lucide-react"
@@ -33,7 +33,7 @@ export function ChatGuide({ initialTribe }: ChatGuideProps) {
   const tribe = initialTribe ? tribes.find((t) => t.id === initialTribe) : null
 
   const { messages, sendMessage, status, setMessages } = useChat({
-    transport: new DefaultChatTransport({ api: "/api/chat" }),
+    transport: new TextStreamChatTransport({ api: "/api/chat" }),
   })
 
   const scrollToBottom = () => {
