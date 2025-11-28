@@ -1,0 +1,29 @@
+local_backend: true
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: "https://tribal.seed2sea.org"
+display_url: "https://tribal.seed2sea.org"
+
+collections:
+  - name: "journal"
+    label: "Living Journal"
+    folder: "content/journal"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Entry Type"
+        name: "entryType"
+        widget: "select"
+        options:
+          - { label: "Comment", value: "comment" }
+          - { label: "Review", value: "review" }
+        default: "comment"
+      - { label: "Author", name: "author", widget: "string", required: false }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown", hint: "Use the editor to craft your story, comment, or review." }

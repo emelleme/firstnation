@@ -8,17 +8,50 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700"] })
 
 export const metadata: Metadata = {
-  title: "First Nations Living Journal | Seed 2 Sea Foundation",
+  metadataBase: new URL("https://tribal.seed2sea.org"),
+  title: {
+    default: "First Nations Living Journal | Seed 2 Sea Foundation",
+    template: "%s | First Nations Living Journal",
+  },
   description:
-    "A living tribute to the Indigenous peoples and tribes of America. Explore the rich history, territories, and cultures of Native American nations.",
+    "Living journal honoring Indigenous peoples and tribes across Turtle Island. Explore territories, history, languages, and culture with respectful storytelling.",
   keywords: [
     "Indigenous peoples",
     "Native American tribes",
     "First Nations",
     "tribal history",
     "Seed 2 Sea Foundation",
+    "Turtle Island",
+    "Indigenous culture",
   ],
-  generator: "v0.app",
+  openGraph: {
+    title: "First Nations Living Journal | Seed 2 Sea Foundation",
+    description:
+      "Explore territories, timelines, and living stories of Indigenous nations across Turtle Island. A respectful guide by Seed 2 Sea.",
+    url: "https://tribal.seed2sea.org",
+    siteName: "First Nations Living Journal",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "First Nations Living Journal by Seed 2 Sea Foundation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "First Nations Living Journal | Seed 2 Sea Foundation",
+    description:
+      "Living tribute to Indigenous nations: territories, history, languages, and culture across Turtle Island.",
+    images: ["/og-default.jpg"],
+  },
+  alternates: {
+    canonical: "https://tribal.seed2sea.org",
+  },
+  generator: "Seed 2 Sea",
 }
 
 export default function RootLayout({

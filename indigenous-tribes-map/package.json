@@ -10,11 +10,11 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "cf:build": "next build && next-on-pages"
+    "cf:build": "next build && next-on-pages",
+    "cf:pages:dev": "next build && next-on-pages && npx wrangler pages dev .vercel/output/static --kv COMMENTS --compatibility-date=2024-12-01"
   },
   "dependencies": {
     "@ai-sdk/react": "latest",
-    "@ai-sdk/openai": "latest",
     "@emotion/is-prop-valid": "latest",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "1.2.2",

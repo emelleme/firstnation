@@ -7,6 +7,8 @@ import { MapPin, Users, Globe, X, ArrowRight } from "lucide-react"
 import { tribes, type Tribe, regionColors, regionPositions } from "@/lib/tribes-data"
 import { Button } from "@/components/ui/button"
 
+const MARKER_VERTICAL_OFFSET_PX = 450
+
 export function TribalMap() {
   const [selectedTribe, setSelectedTribe] = useState<Tribe | null>(null)
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null)
@@ -90,7 +92,7 @@ export function TribalMap() {
               className="absolute transform -translate-x-1/2 -translate-y-1/2 z-10 group"
               style={{
                 left: `${pos.x}%`,
-                top: `${pos.y}%`,
+                top: `calc(${pos.y}% + ${MARKER_VERTICAL_OFFSET_PX}px)`,
               }}
               onClick={() => setSelectedTribe(tribe)}
               onMouseEnter={() => setHoveredRegion(tribe.region)}

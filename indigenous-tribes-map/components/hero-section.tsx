@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { ArrowRight, MapPin, Clock, MessageCircle, Droplets } from "lucide-react"
+import { ArrowRight, MapPin, Clock, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-10">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
@@ -31,15 +31,6 @@ export function HeroSection() {
             A living tribute to Indigenous peoples and tribes—honoring their stewardship, languages, and wisdom across
             Turtle Island.
           </p>
-
-          <div className="inline-flex items-center gap-3 bg-primary-foreground/10 border border-primary-foreground/20 rounded-full px-5 py-2 mb-8 shadow-sm">
-            <div className="h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center">
-              <Droplets className="h-4 w-4 text-accent" />
-            </div>
-            <p className="text-sm sm:text-base text-primary-foreground/80">
-              Waterdrop: Tribal Grandmothers led our first water blessing activation—centering living waters in every story.
-            </p>
-          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">

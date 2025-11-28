@@ -59,6 +59,8 @@ export function ChatGuide({ initialTribe }: ChatGuideProps) {
   }
 
   const handleSuggestionClick = (question: string) => {
+    if (status === "streaming") return
+    setInputValue("")
     sendMessage({ text: question })
   }
 

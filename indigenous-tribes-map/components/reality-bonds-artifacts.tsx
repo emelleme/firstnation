@@ -3,18 +3,21 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Droplets, ShieldCheck, Sparkles, ArrowRight, Images } from "lucide-react"
+import { Droplets, ShieldCheck, Sparkles, ArrowRight, Images, Landmark } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const steps = [
-  { title: "Intent → Escrow", description: "Reality Bonds lock gifts to specific Tribal Artifacts and living water projects." },
   {
-    title: "Proof from the ground",
-    description: "Ceremony photos, geo-tagged deployments, and third-party confirmations mature each bond.",
+    title: "Physical + On-chain",
+    description: "Each bond is anchored to a physical Tribal Artifact (canvas, carving, beadwork) and mirrored on-chain.",
   },
   {
-    title: "Release the story",
-    description: "When proofs arrive, metadata updates and the bond marks the artifact as verified and alive.",
+    title: "Proof from ceremony",
+    description: "Grandmother-led blessings, photos, and geotagged deployments are logged as the bond&apos;s living proof.",
+  },
+  {
+    title: "90/10 Reality Flow",
+    description: "90% funds activation; 10% locks governance tokens in the bond (same model as Seed2Sea Reality Bonds).",
   },
 ]
 
@@ -41,10 +44,36 @@ export function RealityBondsArtifacts() {
               Tribal Artifacts Collection: Reality Bonds
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Each Tribal Artifact pairs ceremony with covenant: Reality Bonds that honor elders, protect living waters,
-              and record verifiable impact. The first piece, gifted by Tribal Grandmother Marcine Quenzer, anchors this
-              collection.
+              Each bond pairs a physical Tribal Artifact with the Reality Bond covenant—grounded in ceremony, on-chain
+              proofs, and the 90/10 model described in our Reality Bond docs. The first canvas, shared by Tribal
+              Grandmother Marcine Quenzer, anchors this collection.
             </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-card border border-border rounded-xl p-4 shadow-sm">
+                <Landmark className="h-5 w-5 text-primary mb-3" />
+                <h3 className="font-semibold text-foreground text-sm mb-2">90/10 Flow</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  90% fuels activation/restoration; 10% locks governance tokens in the bond—identical to the Seed2Sea
+                  Reality Bonds blueprint.
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-4 shadow-sm">
+                <ShieldCheck className="h-5 w-5 text-primary mb-3" />
+                <h3 className="font-semibold text-foreground text-sm mb-2">Proofs that mature</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Ceremony capture, geo-tagged deployments, and third-party confirmations update the bond metadata when
+                  verified.
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-4 shadow-sm">
+                <Sparkles className="h-5 w-5 text-primary mb-3" />
+                <h3 className="font-semibold text-foreground text-sm mb-2">Living artifacts</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Physical art stays with trusted caretakers; the bond is the public covenant that preserves story,
+                  sovereignty, and impact.
+                </p>
+              </div>
+            </div>
             <div className="grid sm:grid-cols-3 gap-4">
               {steps.map((step) => (
                 <div key={step.title} className="bg-card border border-border rounded-xl p-4 shadow-sm">

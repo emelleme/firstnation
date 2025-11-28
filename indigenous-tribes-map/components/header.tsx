@@ -33,6 +33,9 @@ export function Header() {
             <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               About
             </Link>
+            <Link href="/journal" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Living Journal
+            </Link>
             <Button
               asChild
               size="sm"
@@ -91,6 +94,13 @@ export function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               About
+            </Link>
+            <Link
+              href="/journal"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Living Journal
             </Link>
             <Button
               asChild
