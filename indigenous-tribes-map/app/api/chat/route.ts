@@ -1,4 +1,5 @@
-import { consumeStream, convertToCoreMessages, streamText, type UIMessage, createOpenAI } from "ai"
+import { consumeStream, convertToCoreMessages, streamText, type UIMessage } from "ai"
+import { createOpenAI } from '@ai-sdk/openai'
 import { tribes } from "@/lib/tribes-data"
 import { timelineEvents } from "@/lib/timeline-data"
 
