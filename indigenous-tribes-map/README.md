@@ -10,7 +10,7 @@ A living tribute to Indigenous nations across Turtle Island. This app is part of
 - Tailwind 4 design system with motion accents for storytelling
 
 ## Stack
-- Next.js 16 (App Router) + React 19
+- Next.js 15 (App Router) + React 18
 - Tailwind CSS 4 + Framer Motion
 - Vercel AI SDK (@ai-sdk/react + ai)
 
@@ -27,7 +27,7 @@ This repo is configured for Cloudflare Pages + Functions using `@cloudflare/next
 - Functions directory (auto): `.vercel/output/functions`
 - Recommend enabling `nodejs_compat` (set in `wrangler.toml`) so Next.js and the AI SDK work on Workers.
 - Deploy manually: `pnpm dlx wrangler pages deploy .vercel/output/static --project-name tribal-seed2sea`
-- Set secrets in the Pages dashboard (e.g., `ANTHROPIC_API_KEY` for the guide, any analytics keys, etc.).
+- Set secrets in the Pages dashboard (e.g., `OPENROUTER_API_KEY` for the guide, any analytics keys, etc.).
 - Use Node 20 on Pages (`NODE_VERSION=20`) to match the pinned runtime.
 
 ### GitHub CI to Cloudflare Pages
@@ -43,3 +43,9 @@ This repo is configured for Cloudflare Pages + Functions using `@cloudflare/next
 
 ## Seed 2 Sea Context
 This launch (tribal.seed2sea.org) complements the broader Seed 2 Sea storytelling work. For the companion web experience, see the sibling repo in `../seed2sea`.
+
+### Env vars
+- `OPENROUTER_API_KEY` (required for chat)
+- `OPENROUTER_MODEL` (optional, default `x-ai/grok-4.1-fast`)
+- `OPENROUTER_REFERER` and `OPENROUTER_SITE_NAME` (optional branding headers)
+- Any analytics keys you use

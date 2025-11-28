@@ -1,10 +1,19 @@
-import { consumeStream, convertToModelMessages, streamText, type UIMessage } from "ai"
+import { consumeStream, convertToCoreMessages, streamText, type UIMessage, createOpenAI } from "ai"
 import { tribes } from "@/lib/tribes-data"
 import { timelineEvents } from "@/lib/timeline-data"
 
 export const runtime = 'edge'
 
 export const maxDuration = 30
+
+const openrouter = createOpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: "https://openrouter.ai/api/v1",
+  headers: {
+    "HTTP-Referer": process.env.OPENROUTER_REFERER || "https://tribal.seed2sea.org",
+    "X-Title": process.env.OPENROUTER_SITE_NAME || "First Nations Living Journal",
+  },
+})
 
 const systemPrompt = `You are a knowledgeable and respectful guide for the First Nations Living Journal, a tribute to the Indigenous peoples and tribes of America created by the Seed 2 Sea Foundation.
 
@@ -33,10 +42,14 @@ Always be educational, respectful, and encourage deeper exploration of Indigenou
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json()
 
-  const prompt = convertToModelMessages(messages)
+  if (!process.env.OPENROUTER_API_KEY) {
+    return new Response(JSON.stringify({ error: "Missing OPENROUTER_API_KEY" }), { status: 500 })
+  }
+
+  const prompt = convertToCoreMessages(messages)
 
   const result = streamText({
-    model: "anthropic/claude-sonnet-4-20250514",
+    model: openrouter(process.env.OPENROUTER_MODEL || "x-ai/grok-4.1-fast"),
     system: systemPrompt,
     messages: prompt,
     maxOutputTokens: 1500,
