@@ -1,0 +1,7 @@
+name = "tribal-seed2sea"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = ".vercel/output/static"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SITE_NAME = "tribal.seed2sea.org"
