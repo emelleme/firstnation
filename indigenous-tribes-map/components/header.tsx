@@ -17,7 +17,7 @@ export function Header() {
             <span className="font-serif text-lg font-semibold text-foreground">First Nations Journal</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
             <Link href="/map" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Tribal Map
             </Link>
@@ -33,6 +33,19 @@ export function Header() {
             <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               About
             </Link>
+            <Button
+              asChild
+              size="sm"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20"
+            >
+              <a
+                href="https://www.zeffy.com/en-US/donation-form/seed-2-sea-first-nations-donation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Donate
+              </a>
+            </Button>
           </nav>
 
           <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -79,6 +92,18 @@ export function Header() {
             >
               About
             </Link>
+            <Button
+              asChild
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20"
+            >
+              <a
+                href="https://www.zeffy.com/en-US/donation-form/seed-2-sea-first-nations-donation"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Donate
+              </a>
+            </Button>
           </nav>
         </div>
       )}
