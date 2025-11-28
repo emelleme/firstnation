@@ -2,6 +2,8 @@ import { consumeStream, convertToModelMessages, streamText, type UIMessage } fro
 import { tribes } from "@/lib/tribes-data"
 import { timelineEvents } from "@/lib/timeline-data"
 
+export const runtime = 'edge'
+
 export const maxDuration = 30
 
 const systemPrompt = `You are a knowledgeable and respectful guide for the First Nations Living Journal, a tribute to the Indigenous peoples and tribes of America created by the Seed 2 Sea Foundation.

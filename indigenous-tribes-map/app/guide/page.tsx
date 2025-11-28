@@ -4,6 +4,8 @@ import { Footer } from "@/components/footer"
 import { ChatGuide } from "@/components/chat-guide"
 import { MessageCircle, Info } from "lucide-react"
 
+export const runtime = 'edge'
+
 export const metadata = {
   title: "Spirit Guide | First Nations Living Journal",
   description: "Engage in meaningful dialogue about Indigenous history, culture, and traditions with our AI guide.",

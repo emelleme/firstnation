@@ -10,7 +10,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "cf:build": "next-on-pages build"
+    "cf:build": "next build && next-on-pages"
   },
   "dependencies": {
     "@ai-sdk/react": "latest",
