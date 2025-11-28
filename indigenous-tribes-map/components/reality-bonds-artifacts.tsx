@@ -112,7 +112,7 @@ export function RealityBondsArtifacts() {
                 src={artifactImage}
                 alt="Tribal Artifact painting shared by Grandmother Marcine Quenzer"
                 className="w-full h-full object-cover"
-                onError={() => setArtifactImage("/placeholder.jpg")}
+                onError={() => setArtifactImage("/skywoman.jpg")}
               />
               <div className="absolute left-0 right-0 bottom-0 bg-background/70 backdrop-blur-md px-4 py-3 flex items-center gap-3 border-t border-border">
                 <Images className="h-4 w-4 text-primary" />
