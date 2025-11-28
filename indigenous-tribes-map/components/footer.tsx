@@ -9,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Feather className="h-6 w-6" />
-              <span className="font-serif text-xl font-semibold">Seed 2 Sea Foundation</span>
+              <span className="font-serif text-xl font-semibold">Seed 2 Sea Inc</span>
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
               From Faith to Flow — Restoring the Divine Balance of our Oceans through Faith, Science, and Living
@@ -90,7 +90,7 @@ export function Footer() {
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} Seed 2 Sea Foundation. All rights reserved.
+            © {new Date().getFullYear()} Seed 2 Sea Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs text-primary-foreground/50">
             <Waves className="h-4 w-4" />
